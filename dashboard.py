@@ -26,14 +26,14 @@ st.markdown("<h1 style='text-align: center; color: black;'>NFT Analysis and Pred
 col1, col2,col3= st.columns(3)
 
 with col1:
-    st.write('')
+    st.image('https://the-defiant-web.s3.amazonaws.com/img/2022/01/24185250/doodle.png',use_column_width=True)
 
 with col2:
-    st.image('https://cdn.thenewstack.io/media/2022/02/e830b7df-apes_punks_nfts-1024x626.jpg',width=750,use_column_width=True)
+    st.image('https://imageio.forbes.com/specials-images/imageserve/631fd33431b0b6a8ed7ec50a/series-of-Doodles-NFTs-/960x0.jpg?format=jpg&width=960',use_column_width=True)
 
 with col3:
-    st.write('')
-
+    st.image('https://content.fortune.com/wp-content/uploads/2022/09/doodles-raise_banner_image-copy-e1663087276705.jpeg',use_column_width=True)
+#st.image('https://imageio.forbes.com/specials-images/imageserve/631fd33431b0b6a8ed7ec50a/series-of-Doodles-NFTs-/960x0.jpg?format=jpg&width=960',width=800,use_column_width=False)
 @st.experimental_singleton
 def read_data():
     data2=pd.read_csv('project_nft_data.csv')
@@ -91,8 +91,9 @@ def lstm_predictions(data):
     true_forecast = scaler.inverse_transform(test_predictions)
     price_forecast=true_forecast/135
     forecast_df=pd.DataFrame(dates,columns=['Date'])
-    forecast_df['Price_ETH']=price_forecast*0.00061
-    forecast_df['Price_USD']=price_forecast
+    forecast_df['Ethereum Price(ETH)']=price_forecast*0.00061
+    forecast_df['USD Price($)']=price_forecast
+    forecast_df["USD Price($)"] =forecast_df['USD Price($)'].astype(float).round(4)
     forecast_df.set_index('Date',inplace=True)
     return forecast_df
 
@@ -119,18 +120,19 @@ with tab2:
     with col2:
         option_pic = st.selectbox(
             "Select a category to analyse",
-            ('Art', 'Games', 'Collectibles','Other')
+            ('Art', 'Games', 'Collectible','Other')
         )
         st.warning("You have selected "+ option_pic+" category")
 
     with col3:
         if st.button('Predict NFT price'):
-            if 'Art' in uploadFile.name:
-                data_image=read_pred_data('Art')
-            if 'Games' in uploadFile.name:
-                data_image=read_pred_data('Games')
-            if 'Collectible' in uploadFile.name:
-                data_image=read_pred_data('Collectible')
+            # if 'Art' in uploadFile.name:
+            #     data_image=read_pred_data('Art')
+            # if 'Games' in uploadFile.name:
+            #     data_image=read_pred_data('Games')
+            # if 'Collectible' in uploadFile.name:
+            #     data_image=read_pred_data('Collectible')
+            data_image=read_pred_data(option_pic)
             with st.spinner('Wait for it...'):
                 time.sleep(25)
                 st.success('Done!')
