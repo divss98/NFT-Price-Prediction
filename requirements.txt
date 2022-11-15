@@ -1,5 +1,4 @@
 keras==2.6.0
-numpy
 pandas
 six==1.15.0
 typing-extensions==3.7.4
