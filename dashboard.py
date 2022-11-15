@@ -76,7 +76,6 @@ def ID_df(option):
     return image
 
 @st.cache()
-@st.experimental_memo
 def lstm_predictions(data):
     scaler=StandardScaler()
     n_input=7
