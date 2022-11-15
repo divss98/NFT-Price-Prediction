@@ -206,7 +206,6 @@ with tab1:
     #
     # data_lstm=read_pred_data(option)
     # preds=lstm_predictions(data_lstm)
-    print('hi hello hi 123')
     with col3:
         if st.button('Predict'):
             with st.spinner('Wait for it...'):
