@@ -1,7 +1,5 @@
 keras==2.6.0
 pandas
-six==1.15.0
-typing-extensions==3.7.4
 Pillow==9.3.0
 scikit_learn==0.24.2
 tensorflow
