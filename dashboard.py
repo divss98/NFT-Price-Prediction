@@ -214,4 +214,4 @@ with tab1:
             st.write('the 1 month prediction is')
             #st.balloons()
             st.write(lstm_predictions(read_pred_data(option)))
-            st.balloons()
+            #st.balloons()
