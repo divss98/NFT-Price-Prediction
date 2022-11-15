@@ -14,7 +14,6 @@ import keras
 test_predictions = []
 
 
-print('hello hi')
 dates=[]
 datelist = pd.date_range(datetime.datetime.today(), periods=30).tolist()
 for i in datelist:
@@ -37,7 +36,7 @@ with col3:
 
 @st.experimental_singleton
 def read_data():
-    data2=pd.read_csv('data2.csv')
+    data2=pd.read_csv('project_nft_data.csv')
     return data2
 
 data2=read_data()
@@ -76,6 +75,7 @@ def ID_df(option):
     return image
 
 @st.cache()
+#@st.experimental_memo
 def lstm_predictions(data):
     scaler=StandardScaler()
     n_input=7
@@ -102,7 +102,7 @@ def lstm_predictions(data):
 tab1, tab2 = st.tabs(["Analysis and Prediction", "File Uploader"])
 
 with tab2:
-    col1, col2= st.columns(2)
+    col1, col2,col3= st.columns(3)
 
     with col1:
         uploadFile = st.file_uploader(label="Upload NFT image", type=['jpg', 'png'])
@@ -117,6 +117,13 @@ with tab2:
             st.write("Make sure you image is in JPG/PNG Format.")
 
     with col2:
+        option_pic = st.selectbox(
+            "Select a category to analyse",
+            ('Art', 'Games', 'Collectibles','Other')
+        )
+        st.warning("You have selected "+ option_pic+" category")
+
+    with col3:
         if st.button('Predict NFT price'):
             if 'Art' in uploadFile.name:
                 data_image=read_pred_data('Art')
@@ -129,6 +136,7 @@ with tab2:
                 st.success('Done!')
             st.write('the 1 month prediction is')
             st.write(lstm_predictions(data_image))
+            st.balloons()
 
 
 
@@ -184,9 +192,9 @@ with tab1:
             # label_visibility=st.session_state.visibility,
             # disabled=st.session_state.disabled,
         )
-        with st.spinner('Wait for it...'):
-            time.sleep(25)
-            st.success('Done!')
+        # with st.spinner('Wait for it...'):
+        #     time.sleep(25)
+        #     st.success('Done!')
 
     image=ID_df(option_col2)
     with col2:
@@ -207,3 +215,4 @@ with tab1:
             st.write('the 1 month prediction is')
             #st.balloons()
             st.write(lstm_predictions(read_pred_data(option)))
+            st.balloons()
