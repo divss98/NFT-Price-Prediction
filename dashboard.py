@@ -13,7 +13,6 @@ import keras
 # model=keras.models.load_model("lstm_model")
 test_predictions = []
 
-
 dates=[]
 datelist = pd.date_range(datetime.datetime.today(), periods=30).tolist()
 for i in datelist:
@@ -21,7 +20,19 @@ for i in datelist:
 
 #st.title("NFT Analysis and Prediction")
 st.set_page_config(layout='wide',page_title="NFT")
-st.markdown("<h1 style='text-align: center; color: black;'>NFT Analysis and Prediction</h1>", unsafe_allow_html=True)
+
+h1,h2=st.columns(2)
+
+with h1:
+    st.title("NFT Analysis and Prediction")
+
+with h2:
+    st.write(
+        """
+    ##
+    Description of the page here.
+    """
+    )
 
 col1, col2,col3= st.columns(3)
 
