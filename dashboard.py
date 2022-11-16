@@ -29,8 +29,10 @@ with h1:
 with h2:
     st.write(
         """
-    ##
-    Description of the page here.
+    ###
+    Our interface is a one-stop hub for all NFT enthusiasts, buyers and sellers, to learn and explore more about historic and current NFT trends.
+    The dashboard also gives you a prediction of how a specific NFT will be priced in the next 30 days.
+    The user will have the capability to also upload their own NFT and view a price prediction.
     """
     )
 
