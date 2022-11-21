@@ -53,7 +53,7 @@ def read_data():
     return data2
 
 data2=read_data()
-categories=sorted(data2['Category'].unique())
+categories=data2['Category'].unique()
 
 @st.experimental_memo
 def read_pred_data(option):
