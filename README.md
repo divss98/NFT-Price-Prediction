@@ -7,7 +7,7 @@ In this project we built a NFT Analysis and Price Prediction Dashboard with the 
 <li> Predict NFT prices using 5 year NFT sales data </li>
 <li> Upload an NFT image and predict the price after selection of category </li>
 <br>
-This dashboard was made using streamlit. The app is deployed on the following link: <a href="https://divss98-nft-price-prediction-dashboard-xyw2ae.streamlit.app/"> Deployed Streamlit App </a>
+This dashboard was made using streamlit. The app is deployed on the following link: <a href="https://divss98-nft-price-prediction-dashboard-l1yap0.streamlit.app"> Deployed Streamlit App </a>
 </p>
 
 
