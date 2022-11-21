@@ -24,7 +24,7 @@ st.set_page_config(layout='wide',page_title="NFT")
 h1,h2=st.columns(2)
 
 with h1:
-    st.title("NFT Analysis and Prediction")
+    st.title("Analysis and Price Prediction of NFT's")
 
 with h2:
     st.write(
