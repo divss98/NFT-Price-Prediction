@@ -6,6 +6,7 @@ import time
 from sklearn.preprocessing import StandardScaler
 import datetime
 import keras
+import matplotlib.pyplot as plt
 
 # scaler=StandardScaler()
 # n_input=7
@@ -53,7 +54,8 @@ def read_data():
     return data2
 
 data2=read_data()
-categories=data2['Category'].unique()
+data2['Datetime_updated']=pd.to_datetime(data2['Datetime_updated'])
+categories=sorted(data2['Category'].unique())
 
 @st.experimental_memo
 def read_pred_data(option):
@@ -166,7 +168,11 @@ with tab1:
     category_subset=categories_df(option)
     counts=category_subset['Collection'].value_counts().rename_axis('Collection').reset_index(name='counts')
     price_data_cat=category_subset[['Datetime_updated','Price_USD']]
+    price_data_cat['Datetime_updated']=pd.to_datetime(price_data_cat['Datetime_updated']).dt.date
+    print(price_data_cat.head())
     price_data_cat.set_index('Datetime_updated',inplace=True)
+    # df=price_data_cat.groupby([(pd.DatetimeIndex(price_data_cat['Datetime_updated']).year)]).sum()
+    # print(df)
 
     with col2:
         tab1, tab2 = st.tabs(["Bar Chart", "Line Chart"])
@@ -188,6 +194,7 @@ with tab1:
 
     collection_subset=collections_df(option_coll)
     price_data_coll=collection_subset[['Datetime_updated','Price_USD']]
+    price_data_coll['Datetime_updated']=(pd.DatetimeIndex(price_data_coll['Datetime_updated'])).date
     price_data_coll.set_index('Datetime_updated',inplace=True)
 
     with col2:
