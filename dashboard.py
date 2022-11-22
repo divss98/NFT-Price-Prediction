@@ -6,7 +6,7 @@ import time
 from sklearn.preprocessing import StandardScaler
 import datetime
 import keras
-import matplotlib.pyplot as plt
+
 
 # scaler=StandardScaler()
 # n_input=7
